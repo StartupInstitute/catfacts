@@ -1,0 +1,29 @@
+<h1>Listing facts</h1>
+
+<table>
+  <tr>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @facts.each do |fact| %>
+  <tr>
+    <td><%= fact.body %></td>
+    <td><%= link_to 'Show', fact %></td>
+    <td><%= link_to 'Edit', edit_fact_path(fact) %></td>
+    <td><%= link_to 'Destroy', fact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= form_tag deliver_facts_path do %>
+  Phone: 
+  <%= text_field_tag :phone %>
+  <%= submit_tag %>
+<%- end %>
+
+<%= link_to 'New Fact', new_fact_path %>
